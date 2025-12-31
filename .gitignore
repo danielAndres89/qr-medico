@@ -1,0 +1,70 @@
+# ===============================
+# Python
+# ===============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.so
+*.egg-info/
+dist/
+build/
+
+# ===============================
+# Virtual Environment
+# ===============================
+venv/
+.env/
+.env.*
+pip-wheel-metadata/
+
+# ===============================
+# Flask
+# ===============================
+instance/
+.webassets-cache
+flask_session/
+
+# ===============================
+# Flask-Migrate / Alembic
+# ===============================
+migrations/versions/*.pyc
+migrations/versions/__pycache__/
+
+# ===============================
+# Logs
+# ===============================
+*.log
+
+# ===============================
+# OS / IDE
+# ===============================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# ===============================
+# QR Images (IMPORTANT)
+# ===============================
+app/static/qr/
+static/qr/
+
+# ===============================
+# Database
+# ===============================
+*.sqlite3
+*.db
+
+# ===============================
+# Node (por si luego agregas frontend)
+# ===============================
+node_modules/
+npm-debug.log*
+
+# ===============================
+# Docker
+# ===============================
+.env.docker
