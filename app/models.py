@@ -1,7 +1,8 @@
-from .extensions import db
+from .extensions import db, bcrypt
 from flask_login import UserMixin
 from datetime import datetime
 import uuid
+
 
 
 class Usuario(UserMixin, db.Model):
@@ -12,6 +13,12 @@ class Usuario(UserMixin, db.Model):
     password_hash = db.Column(db.Text, nullable=False)
     activo = db.Column(db.Boolean, default=True)
     fecha_creacion = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def set_password(self, password):
+        self.password_hash = bcrypt.generate_password_hash(password).decode("utf-8")
+
+    def check_password(self, password):
+        return bcrypt.check_password_hash(self.password_hash, password)
 
 
 class Persona(db.Model):

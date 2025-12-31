@@ -4,6 +4,8 @@ from .extensions import db, login_manager, bcrypt, migrate
 from app.personas.routes import personas_bp
 from app.models import Usuario
 from app.extensions import db, bcrypt
+from app.auth.routes import auth_bp
+from app.qr.routes import qr_bp
 
 
 def create_app():
@@ -16,10 +18,6 @@ def create_app():
     migrate.init_app(app, db)  # 👈 ESTA LÍNEA CREA "flask db"
 
     login_manager.login_view = "auth.login"
-
-    from .auth.routes import auth_bp
-    from .personas.routes import personas_bp
-    from .qr.routes import qr_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(personas_bp)
