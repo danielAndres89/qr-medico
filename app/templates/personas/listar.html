@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Registro de Personas</h3>
+
+<!-- Formulario crear -->
+<form method="POST" action="{{ url_for('personas.crear') }}" class="row g-2 mb-4">
+    <div class="col-md-2">
+        <input class="form-control" name="cedula" placeholder="Cédula" required>
+    </div>
+    <div class="col-md-3">
+        <input class="form-control" name="nombres" placeholder="Nombres" required>
+    </div>
+    <div class="col-md-3">
+        <input class="form-control" name="apellidos" placeholder="Apellidos" required>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-success w-100">Agregar</button>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Tipo Sangre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in personas %}
+        <tr>
+            <td>{{ p.cedula }}</td>
+            <td>{{ p.nombres }} {{ p.apellidos }}</td>
+            <td>{{ p.tipo_sangre or '-' }}</td>
+            <td>
+                <a href="{{ url_for('personas.editar', id=p.id) }}" class="btn btn-sm btn-warning">
+                    ✏️ Editar
+                </a>
+                <a href="{{ url_for('qr.generar', persona_id=p.id) }}" class="btn btn-sm btn-primary">
+                    📱 QR
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

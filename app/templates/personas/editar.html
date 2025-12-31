@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4>Editar Persona</h4>
+
+<form method="POST">
+    <div class="row">
+        <div class="col-md-6 mb-2">
+            <label>Nombres</label>
+            <input class="form-control" name="nombres" value="{{ persona.nombres }}">
+        </div>
+        <div class="col-md-6 mb-2">
+            <label>Apellidos</label>
+            <input class="form-control" name="apellidos" value="{{ persona.apellidos }}">
+        </div>
+        <div class="col-md-3 mb-2">
+            <label>Tipo Sangre</label>
+            <input class="form-control" name="tipo_sangre" value="{{ persona.tipo_sangre }}">
+        </div>
+        <div class="col-md-9 mb-2">
+            <label>Alergias</label>
+            <input class="form-control" name="alergias" value="{{ persona.alergias }}">
+        </div>
+        <div class="col-md-12 mb-2">
+            <label>Enfermedades</label>
+            <textarea class="form-control" name="enfermedades">{{ persona.enfermedades }}</textarea>
+        </div>
+        <div class="col-md-12 mb-2">
+            <label>Medicamentos</label>
+            <textarea class="form-control" name="medicamentos">{{ persona.medicamentos }}</textarea>
+        </div>
+        <div class="col-md-12 mb-2">
+            <label>Contacto Emergencia</label>
+            <input class="form-control" name="contacto_emergencia" value="{{ persona.contacto_emergencia }}">
+        </div>
+        <div class="col-md-12 mb-2">
+            <label>Observaciones</label>
+            <textarea class="form-control" name="observaciones">{{ persona.observaciones }}</textarea>
+        </div>
+    </div>
+
+    <button class="btn btn-primary">Guardar cambios</button>
+    <a href="{{ url_for('personas.listar') }}" class="btn btn-secondary">Volver</a>
+</form>
+{% endblock %}

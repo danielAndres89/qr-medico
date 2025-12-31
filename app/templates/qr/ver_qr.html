@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>QR Médico</h3>
+
+<p><strong>Nombre:</strong> {{ persona.nombres }} {{ persona.apellidos }}</p>
+<p><strong>Tipo de sangre:</strong> {{ persona.tipo_sangre or "-" }}</p>
+
+<img src="{{ url_for('static', filename='qr/' ~ qr_filename) }}" alt="QR Médico" style="width:300px;">
+
+<br><br>
+
+<p>
+    <strong>URL pública:</strong><br>
+    <a href="{{ url_publica }}" target="_blank">
+        {{ url_publica }}
+    </a>
+</p>
+
+<a href="{{ url_for('personas.listar') }}" class="btn btn-secondary">
+    Volver
+</a>
+
+{% endblock %}
