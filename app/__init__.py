@@ -2,6 +2,8 @@ from flask import Flask
 from .config import Config
 from .extensions import db, login_manager, bcrypt, migrate
 from app.personas.routes import personas_bp
+from app.models import Usuario
+from app.extensions import db, bcrypt
 
 
 def create_app():
@@ -24,3 +26,15 @@ def create_app():
     app.register_blueprint(qr_bp)
 
     return app
+
+
+def crear_admin_por_defecto():
+    admin = Usuario.query.filter_by(username="admin").first()
+    if not admin:
+        admin = Usuario(
+            username="admin",
+            password_hash=bcrypt.generate_password_hash("admin123").decode(),
+        )
+        db.session.add(admin)
+        db.session.commit()
+        print("✅ Usuario admin creado")
