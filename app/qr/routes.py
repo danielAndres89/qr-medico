@@ -54,7 +54,8 @@ def generar(persona_id):
     qr_filename = f"persona_{persona.id}.png"
     qr_path = os.path.join(qr_dir, qr_filename)
 
-    qr = qrcode.make(json.dumps(data))
+    #qr = qrcode.make(json.dumps(data))
+    qr = qrcode.make(url_publica)
     qr.save(qr_path)
 
     return render_template(
